@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java Collections – chọn DS nào?</title>
+  <link rel="stylesheet" href="../assets/css/index.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="../index.html" class="header__title">Tuấn Anh Blog</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="../index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+  <main class="post" style="max-width: 820px; margin: 2rem auto; padding: 0 1rem;">
+    <h1 class="post__title">Java Collections – chọn DS nào?</h1>
+    <img class="post-hero" src="../assets/images/Post/Java Collections – chọn DS nào.png" alt="Java Collections" />
+    <p class="post__summary">So sánh ArrayList, LinkedList, HashMap, TreeMap, HashSet, TreeSet với tình huống thực tế: CRUD, tìm kiếm, sắp xếp, duyệt.</p>
+    <h2>ArrayList vs LinkedList</h2>
+    <p>ArrayList tối ưu truy cập theo index; LinkedList tốt cho chèn/xoá giữa danh sách.</p>
+    <h2>HashMap vs TreeMap</h2>
+    <p>HashMap nhanh trung bình; TreeMap có thứ tự tăng dần theo key (log n).</p>
+    <h2>HashSet vs TreeSet</h2>
+    <p>HashSet kiểm tra tồn tại O(1) trung bình; TreeSet có thứ tự và hỗ trợ range query.</p>
+    <pre><code>// Ví dụ chọn cấu trúc dữ liệu
+List<String> names = new ArrayList<>(); // chèn cuối và truy cập index nhanh
+Map<String,Integer> scores = new HashMap<>(); // tra cứu theo key nhanh
+Set<String> sorted = new TreeSet<>(); // cần dữ liệu đã sắp xếp
+    </code></pre>
+    <h2>Độ phức tạp truy cập</h2>
+    <table style="width:100%"><tbody>
+      <tr><td><strong>ArrayList</strong></td><td>get O(1), add cuối O(1)*, remove middle O(n)</td></tr>
+      <tr><td><strong>LinkedList</strong></td><td>get O(n), add/remove đầu O(1)</td></tr>
+      <tr><td><strong>HashMap</strong></td><td>put/get trung bình O(1)</td></tr>
+      <tr><td><strong>TreeMap</strong></td><td>put/get O(log n), có thứ tự</td></tr>
+    </tbody></table>
+    <h2>Mẹo thực tế</h2>
+    <ul>
+      <li>Ước lượng kích thước ban đầu: <code>new HashMap<>(expected*1.33f)</code> để giảm rehash.</li>
+      <li>Dùng <code>Collections.unmodifiableList</code> khi muốn bất biến.</li>
+      <li>Dùng <code>EnumMap</code>/<code>EnumSet</code> nếu key là enum.</li>
+    </ul>
+    <h2>FAQ</h2>
+    <p><strong>ConcurrentHashMap vs HashMap?</strong> ConcurrentHashMap an toàn luồng; HashMap nhanh hơn trong đơn luồng.</p>
+    <h2>Case study: Feed mạng xã hội</h2>
+    <p>Queue yêu cầu (LinkedList/ArrayDeque), map user→posts (HashMap), giữ thứ tự theo thời gian (TreeMap hoặc PriorityQueue) để phân phối feed.</p>
+    <section class="related">
+      <h3 class="related__title">Bài viết gần đây</h3>
+      <div class="related__grid">
+        <a class="related-card" href="./post4.html"><img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Exception" /><div class="related-card__body"><h4 class="related-card__title">Ngoại lệ trong Java</h4><p class="related-card__desc">try/catch và best practice.</p></div></a>
+        <a class="related-card" href="./post5.html"><img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Network" /><div class="related-card__body"><h4 class="related-card__title">Mạng với Java</h4><p class="related-card__desc">TCP/UDP và ví dụ.</p></div></a>
+        <a class="related-card" href="./post1.html"><img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="JVM" /><div class="related-card__body"><h4 class="related-card__title">JVM/JRE/JDK</h4><p class="related-card__desc">Nền tảng chạy Java.</p></div></a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

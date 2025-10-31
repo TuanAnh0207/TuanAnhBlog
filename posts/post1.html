@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Java: Hiểu đúng về JVM, JRE, JDK</title>
+  <link rel="stylesheet" href="../assets/css/index.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="../index.html" class="header__title">Tuấn Anh Blog</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="../index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+  <main class="post" style="max-width: 820px; margin: 2rem auto; padding: 0 1rem;">
+    <h1 class="post__title">Java: Hiểu đúng về JVM, JRE, JDK</h1>
+    <img class="post-hero" src="../assets/images/Post/Java Hiểu đúng về JVM, JRE, JDK.png" alt="Java JVM JRE JDK" />
+    <p class="post__summary">Phân biệt rõ JVM, JRE, JDK và vai trò của từng thành phần trong chuỗi biên dịch–chạy ứng dụng Java. Bài viết kèm ví dụ lệnh và đoạn code nhỏ để bạn thử nhanh.</p>
+    <h2>JVM là gì?</h2>
+    <p>JVM (Java Virtual Machine) là máy ảo thực thi bytecode (.class). JVM chịu trách nhiệm GC, JIT và quản lý bộ nhớ.</p>
+    <h2>JRE là gì?</h2>
+    <p>JRE = JVM + thư viện runtime. Dùng để chạy ứng dụng Java đã biên dịch.</p>
+    <h2>JDK là gì?</h2>
+    <p>JDK = JRE + công cụ phát triển (javac, javadoc, jdb...). Dùng để phát triển và biên dịch.</p>
+    <h2>Ví dụ biên dịch và chạy</h2>
+    <pre><code>// Hello.java
+public class Hello {
+  public static void main(String[] args){
+    System.out.println("Hello JVM");
+  }
+}
+
+// Terminal
+javac Hello.java
+java Hello</code></pre>
+    <h2>Vòng đời một chương trình Java</h2>
+    <ol>
+      <li>Viết mã nguồn <code>.java</code>.</li>
+      <li><code>javac</code> biên dịch thành <code>.class</code> (bytecode).</li>
+      <li>Class loader nạp lớp vào JVM.</li>
+      <li>Bytecode verifier kiểm tra an toàn.</li>
+      <li>Interpreter/JIT thực thi và tối ưu.</li>
+    </ol>
+    <h2>JIT hoạt động thế nào?</h2>
+    <p>HotSpot thu thập profile và biên dịch các hotspot sang mã máy để tăng tốc. Inline method, escape analysis, loop unrolling được dùng để tối ưu runtime.</p>
+    <h2>Quản lý bộ nhớ & GC</h2>
+    <p>Heap gồm young/old generations. GC (G1/ZGC) thu gom vùng không dùng; tuỳ app latency/throughput để chọn collector và điều chỉnh <code>-Xms -Xmx</code>, <code>-XX:MaxGCPauseMillis</code>.</p>
+    <h2>Tuỳ biến môi trường</h2>
+    <pre><code># ví dụ cấu hình JVM
+java -Xms512m -Xmx1024m -XX:+UseG1GC -XX:MaxGCPauseMillis=100 -jar app.jar</code></pre>
+    <h2>Lỗi thường gặp</h2>
+    <ul>
+      <li><strong>ClassNotFoundException</strong>: thiếu classpath. Khắc phục: thêm <code>-cp</code> đúng.</li>
+      <li><strong>NoSuchMethodError: main</strong>: sai signature <code>public static void main(String[] args)</code>.</li>
+      <li><strong>OutOfMemoryError</strong>: tăng heap hoặc sửa leak.</li>
+    </ul>
+    <h2>Case study: CLI mini tool</h2>
+    <p>Tạo ứng dụng CLI đọc file cấu hình JSON, parse bằng <code>Jackson</code>, và in report. Dùng <code>picocli</code> để quản lý tham số; đóng gói thành fat-jar với <code>maven-shade-plugin</code>.</p>
+    <h2>FAQ</h2>
+    <p><strong>JRE có còn tồn tại?</strong> Từ Java 11 chủ yếu phát hành JDK; runtime có thể tạo bằng <code>jlink</code>.</p>
+    <h2>Case study: CLI tool đa nền tảng</h2>
+    <p>Xây một công cụ CLI bằng Java giúp chạy được trên Windows/macOS/Linux nhờ JVM. Đóng gói bằng <code>jlink</code> để tạo runtime nhỏ gọn, giảm kích thước phát hành.</p>
+    <pre><code>jlink --module-path $JAVA_HOME/jmods --add-modules java.base,java.net.http \
+      --output runtime-min --strip-debug --compress=2 --no-header-files --no-man-pages</code></pre>
+    <h2>FAQ</h2>
+    <p><strong>Vì sao cùng bản JDK nhưng tốc độ khác?</strong> Do khác cấu hình JIT, GC, phần cứng, input workload. Benchmark bằng JMH để công bằng.</p>
+    <p><strong>Chọn JDK nào?</strong> Temurin, Azul, Oracle đều tốt; quan trọng là cập nhật bảo mật đều, phù hợp dự án.</p>
+    <h2>Tài liệu nên đọc</h2>
+    <ul>
+      <li>Java Language Specification</li>
+      <li>HotSpot VM WhitePaper</li>
+      <li>JMH Samples (benchmark Java)</li>
+    </ul>
+    <section class="related">
+      <h3 class="related__title">Bài viết gần đây</h3>
+      <div class="related__grid">
+        <a class="related-card" href="./post2.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="OOP Java" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">OOP Java qua ví dụ</h4>
+            <p class="related-card__desc">Class, interface, abstract và SOLID.</p>
+          </div>
+        </a>
+        <a class="related-card" href="./post3.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Collections" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">Java Collections – chọn DS?</h4>
+            <p class="related-card__desc">ArrayList, HashMap, Set...</p>
+          </div>
+        </a>
+        <a class="related-card" href="./post6.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="JS Scope" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">JS: Scope & Closure</h4>
+            <p class="related-card__desc">Tránh lỗi biến và hiểu closure.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

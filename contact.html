@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên hệ | Tuấn Anh</title>
+  <link rel="stylesheet" href="./assets/css/index.css" />
+  <link rel="icon" type="image/jpeg" href="./assets/images/Avatar/TuanAnh.jpg">
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <span class="header__title">Tuấn Anh Blog</span>
+      <nav class="header__nav">
+        <a href="./index.html" class="header__nav-link">Home</a>
+        <a href="#" class="header__nav-link">Blog</a>
+        <a href="./certificates.html" class="header__nav-link">Chứng chỉ</a>
+        <a href="./contact.html" class="header__nav-link">Liên hệ</a>
+        <button id="theme-toggle" class="header__nav-link" aria-label="Chuyển theme">🌞</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="contact-page">
+    <h1 class="post__title" style="font-size:1.8rem">Liên hệ tôi</h1>
+    <p class="post__summary">Mình luôn sẵn sàng kết nối cho cơ hội học hỏi, cộng tác và phát triển dự án.</p>
+
+    <form class="contact-form" action="https://formspree.io/f/xbldzjqp" method="POST">
+      <div class="form-row">
+        <label>Họ và tên
+          <input name="name" placeholder="Nguyễn Văn A" required>
+        </label>
+        <label>Email
+          <input type="email" name="email" placeholder="ban@email.com" required>
+        </label>
+      </div>
+      <label>Tin nhắn
+        <textarea name="message" rows="6" placeholder="Nội dung liên hệ..." required></textarea>
+      </label>
+      <div class="form-actions">
+        <button class="post__readmore" type="submit">Gửi</button>
+      </div>
+    </form>
+
+    <div class="contact" style="margin-top:1.4rem;">
+      <h2 class="contact__title">Kết nối khác</h2>
+      <p class="contact__desc"></p>
+      <nav class="contact__links">
+        <a class="contact__link" href="https://www.instagram.com/tuaw.ahnn_/" target="_blank" rel="noopener">Instagram</a>
+        <a class="contact__link" href="https://github.com/TuanAnh0207" target="_blank" rel="noopener">GitHub</a>
+        <a class="contact__link" href="https://www.facebook.com/tuananh0207" target="_blank" rel="noopener">Facebook</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer class="footer">&copy; 2025 Tuấn Anh Blog</footer>
+  <script src="./assets/js/index.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Cá nhân – Tuấn Anh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/index.css" />
+  <link rel="icon" type="image/jpeg" href="./assets/images/Avatar/TuanAnh.JPG">
+</head>
+<body>
+  <div class="sky-bg">
+    <!-- Mặt trời -->
+    <svg class="sun" viewBox="0 0 90 90"><circle cx="45" cy="45" r="30" fill="#ffd94a"/></svg>
+    <!-- Nhiều đám mây (6 cloud, layer & size khác nhau) -->
+    <svg class="cloud cloud1" viewBox="0 0 64 32"><ellipse cx="24" cy="14" rx="24" ry="12" fill="#fff" opacity=".93"/><ellipse cx="44" cy="17" rx="19" ry="10" fill="#fff" opacity=".75"/></svg>
+    <svg class="cloud cloud2" viewBox="0 0 58 28"><ellipse cx="19" cy="16" rx="17" ry="10" fill="#fff"/><ellipse cx="37" cy="14" rx="14" ry="7" fill="#fff" opacity=".82"/></svg>
+    <svg class="cloud cloud3" viewBox="0 0 76 37"><ellipse cx="38" cy="20" rx="24" ry="14" fill="#fff" opacity=".92"/><ellipse cx="55" cy="11" rx="18" ry="9" fill="#fff" opacity=".7"/></svg>
+    <svg class="cloud cloud4" viewBox="0 0 56 24"><ellipse cx="18" cy="13" rx="16" ry="8.5" fill="#fff" opacity=".92"/><ellipse cx="38" cy="13" rx="14" ry="7.2" fill="#fff" opacity=".8"/></svg>
+    <svg class="cloud cloud5" viewBox="0 0 53 23"><ellipse cx="21" cy="10" rx="13" ry="6" fill="#fff"/><ellipse cx="37" cy="13.5" rx="12" ry="6" fill="#fff" opacity=".73"/></svg>
+    <svg class="cloud cloud6" viewBox="0 0 49 19"><ellipse cx="12" cy="11" rx="11" ry="7" fill="#fff" opacity=".85"/><ellipse cx="32" cy="10" rx="14" ry="7" fill="#fff" opacity=".7"/></svg> 
+  </div>
+  <header class="header">
+    <div class="header__container">
+      <span class="header__title">Tuấn Anh Blog</span>
+      <nav class="header__nav">
+        <a href="#" class="header__nav-link">Home</a>
+        <a href="#" class="header__nav-link">Blog</a>
+        <a href="./certificates.html" class="header__nav-link">Chứng chỉ</a>
+        <a href="./contact.html" class="header__nav-link">Liên hệ</a>
+        <button id="theme-toggle" class="header__nav-link" aria-label="Chuyển theme">🌞</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="about">
+    <div class="about__container">
+      <div class="about__avatar-wrap">
+        <img class="about__avatar" src="./assets/images/Avatar/TuanAnh.JPG" alt="Avatar Tuấn Anh" width="140" height="140" />
+        <span class="avatar-dot dot1" aria-hidden="true"></span>
+        <span class="avatar-dot dot2" aria-hidden="true"></span>
+        <span class="avatar-dot dot3" aria-hidden="true"></span>
+      </div>
+      <div class="about__content">
+        <h1 class="about__title" data-typing>Xin chào, mình là Tuấn Anh — lập trình viên hướng sản phẩm, yêu Java, JavaScript và Mạng máy tính</h1>
+        <p class="about__slogan" data-typing data-typing-delay="600">Nghĩ như hệ thống • Viết mã có tâm • Chia sẻ có tầm</p>
+        <p class="about__desc">Mình thích biến ý tưởng thành những sản phẩm thực tế, bền vững và đáng tin cậy. Mối quan tâm chính: thiết kế kiến trúc, giao tiếp mạng (TCP/HTTP/WebSocket), tối ưu hiệu năng, bảo mật căn bản và trải nghiệm người dùng. Ở đây mình ghi lại cách tiếp cận vấn đề, các thử nghiệm nhỏ, bài học từ dự án cá nhân và kinh nghiệm làm việc nhóm để cùng học hỏi, cùng phát triển.</p>
+        <ul class="about__skills">
+          <li class="about__skill">Java</li>
+          <li class="about__skill">JavaScript</li>
+          <li class="about__skill">Network</li>
+          <li class="about__skill">Socket</li>
+          <li class="about__skill">REST API</li>
+        </ul>
+        <div class="about__actions">
+          <a class="about__btn" href="#">Xem blog</a>
+          <a class="about__btn about__btn--alt" href="#">Giới thiệu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline">
+    <h2 class="timeline__title">Hành trình học tập (2022 – 2025)</h2>
+    <div class="timeline__line">
+      <div class="timeline__item">
+        <div class="dot"></div>
+        <div class="content">
+          <div class="time">2022</div>
+          <h3>Bắt đầu đại học</h3>
+          <p>Làm quen với Java/JS cơ bản, cấu trúc dữ liệu và mạng máy tính nhập môn.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="dot"></div>
+        <div class="content">
+          <div class="time">2023</div>
+          <h3>Dự án học thuật</h3>
+          <p>Thực hiện các đồ án môn: web tĩnh, Java socket, APIs. Bắt đầu viết blog ghi chép.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="dot"></div>
+        <div class="content">
+          <div class="time">2024</div>
+          <h3>Thực hành chuyên sâu</h3>
+          <p>Đào sâu Java networking, tối ưu hiệu năng JS, hoàn thiện portfolio và chứng chỉ.</p>
+        </div>
+      </div>
+      <div class="timeline__item">
+        <div class="dot"></div>
+        <div class="content">
+          <div class="time">2025</div>
+          <h3>Hoàn thành chương trình</h3>
+          <p>Tổng kết kiến thức, hoàn thiện các dự án tốt nghiệp và định hướng nghề nghiệp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-post">
+    <h2 class="featured-post__title">Bài viết nổi bật</h2>
+    <div class="featured-slider">
+      <button class="featured-slider-prev slider-btn" aria-label="Trước">&#8592;</button>
+      <div class="featured-slider-window">
+        <div class="featured-slider-track">
+          <div class="featured-slide">
+            <img src="./assets/images/Post/Java Hiểu đúng về JVM, JRE, JDK.png" alt="Java: Hiểu đúng về JVM, JRE, JDK" class="featured-thumb" />
+            <h3 class="slide-title">Java: Hiểu đúng về JVM, JRE, JDK</h3>
+            <p class="slide-desc">Bóc tách nền tảng chạy app Java – bạn đã thực sự hiểu đúng sự khác biệt và cơ chế vận hành?</p>
+            <a href="./posts/post1.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/OOP Java qua ví dụ thực chiến.png" alt="OOP Java" class="featured-thumb" />
+            <h3 class="slide-title">OOP Java qua ví dụ thực chiến</h3>
+            <p class="slide-desc">Class, Interface, Abstract class & pattern OOP ứng dụng vào code thực tế!</p>
+            <a href="./posts/post2.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/Java Collections – chọn DS nào.png" alt="Collections" class="featured-thumb" />
+            <h3 class="slide-title">Java Collections – chọn DS nào?</h3>
+            <p class="slide-desc">Khi nào dùng ArrayList, HashMap, Set - góc nhìn thực tế và kinh nghiệm cá nhân.</p>
+            <a href="./posts/post3.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/Xử lý ngoại lệ trong Java.png" alt="Exception" class="featured-thumb" />
+            <h3 class="slide-title">Xử lý ngoại lệ trong Java</h3>
+            <p class="slide-desc">Best practice cho try/catch/finally và ví dụ code thực tế dễ nhớ!</p>
+            <a href="./posts/post4.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/Lập trình mạng với Java.png" alt="Socket Java" class="featured-thumb" />
+            <h3 class="slide-title">Lập trình mạng với Java</h3>
+            <p class="slide-desc">Hướng dẫn socket TCP/UDP, client-server từ lý thuyết tới thực hành.</p>
+            <a href="./posts/post5.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/JS Scope, Hoisting, Closure.png" alt="Scope JS" class="featured-thumb" />
+            <h3 class="slide-title">JS: Scope, Hoisting, Closure</h3>
+            <p class="slide-desc">Nhận diện bẫy thường gặp và cách tư duy "closure" hiệu quả khi code JS.</p>
+            <a href="./posts/post6.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/JS Promise & async-await.png" alt="Promise JS" class="featured-thumb" />
+            <h3 class="slide-title">JS: Promise & async-await</h3>
+            <p class="slide-desc">Quy trình và thực chiến chuỗi bất đồng bộ cho người bắt đầu với JS hiện đại.</p>
+            <a href="./posts/post7.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/DOM & Event JS.png" alt="DOM JS" class="featured-thumb" />
+            <h3 class="slide-title">DOM & Event JS</h3>
+            <p class="slide-desc">Cách thao tác DOM hiệu quả và tối ưu hiệu suất cho interactive UI JS.</p>
+            <a href="./posts/post8.html" class="slide-readmore">Đọc bài</a>
+          </div>
+          <div class="featured-slide">
+            <img src="./assets/images/Post/Fetch API and JSON.png" alt="Fetch API" class="featured-thumb" />
+            <h3 class="slide-title">Fetch API & JSON</h3>
+            <p class="slide-desc">Cách gọi API hiện đại với fetch và xử lý dữ liệu JSON dễ hiểu.</p>
+            <a href="./posts/post9.html" class="slide-readmore">Đọc bài</a>
+          </div>
+        </div>
+      </div>
+      <button class="featured-slider-next slider-btn" aria-label="Tiếp">&#8594;</button>
+    </div>
+    <div class="featured-slider-dots">
+      <span class="dot active" data-slide="1"></span>
+      <span class="dot" data-slide="2"></span>
+      <span class="dot" data-slide="3"></span>
+      <span class="dot" data-slide="4"></span>
+      <span class="dot" data-slide="5"></span>
+      <span class="dot" data-slide="6"></span>
+      <span class="dot" data-slide="7"></span>
+      <span class="dot" data-slide="8"></span>
+      <span class="dot" data-slide="9"></span>
+    </div>
+  </section>
+
+  <section class="projects">
+    <h2 class="projects__title">Dự án cá nhân</h2>
+    <div class="projects__grid">
+      <article class="project">
+        <div class="project__thumb" style="background-image:url('./assets/images/project/Java Socket Chat.png'); background-size:cover; background-position:center;"></div>
+        <h3 class="project__name">Java Socket Chat</h3>
+        <p class="project__desc">Ứng dụng chat client/server sử dụng TCP, hỗ trợ nhiều phòng, nickname.</p>
+        <a class="project__link" href="#">Xem chi tiết</a>
+      </article>
+      <article class="project">
+        <div class="project__thumb" style="background-image:url('./assets/images/project/JS Notes Markdown.png'); background-size:cover; background-position:center;"></div>
+        <h3 class="project__name">JS Notes Markdown</h3>
+        <p class="project__desc">Trình ghi chú Markdown thuần JS, hỗ trợ lưu localStorage, copy code.</p>
+        <a class="project__link" href="#">Xem chi tiết</a>
+      </article>
+      <article class="project">
+        <div class="project__thumb" style="background-image:url('./assets/images/project/Network Tools.png'); background-size:cover; background-position:center;"></div>
+        <h3 class="project__name">Network Tools</h3>
+        <p class="project__desc">Bộ công cụ nhỏ kiểm tra ping/latency và phân tích header HTTP.</p>
+        <a class="project__link" href="#">Xem chi tiết</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="languages">
+    <h2 class="languages__title">Ngôn ngữ chính</h2>
+    <div class="languages__tables">
+      <article class="language-card">
+        <header class="language-card__header">
+          <span class="language-card__flag">🇬🇧</span>
+          <h3 class="language-card__title">Tiếng Anh</h3>
+          <span class="level-badge">C1</span>
+        </header>
+        <table class="language-table" aria-label="Bảng kỹ năng Tiếng Anh">
+          <tbody>
+            <tr>
+              <th>Trình độ</th>
+              <td>C1 (ước lượng)</td>
+            </tr>
+            <tr>
+              <th>Nghe</th>
+              <td>Tốt (podcast, technical talks)</td>
+            </tr>
+            <tr>
+              <th>Nói</th>
+              <td>Giao tiếp học thuật/technical</td>
+            </tr>
+            <tr>
+              <th>Đọc</th>
+              <td>Document kỹ thuật, RFC, sách</td>
+            </tr>
+            <tr>
+              <th>Viết</th>
+              <td>Viết báo cáo/issue/PR tiếng Anh</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="language-meters">
+          <div class="lang-meter"><span>Nghe</span><div class="bar"><i style="width:88%"></i></div></div>
+          <div class="lang-meter"><span>Nói</span><div class="bar"><i style="width:82%"></i></div></div>
+          <div class="lang-meter"><span>Đọc</span><div class="bar"><i style="width:90%"></i></div></div>
+          <div class="lang-meter"><span>Viết</span><div class="bar"><i style="width:80%"></i></div></div>
+        </div>
+      </article>
+
+      <article class="language-card">
+        <header class="language-card__header">
+          <span class="language-card__flag">🇩🇪</span>
+          <h3 class="language-card__title">Tiếng Đức</h3>
+          <span class="level-badge">B2</span>
+        </header>
+        <table class="language-table" aria-label="Bảng kỹ năng Tiếng Đức">
+          <tbody>
+            <tr>
+              <th>Trình độ</th>
+              <td>B2 (ước lượng)</td>
+            </tr>
+            <tr>
+              <th>Nghe</th>
+              <td>Giao tiếp thường ngày</td>
+            </tr>
+            <tr>
+              <th>Nói</th>
+              <td>Hội thoại cơ bản/đi học</td>
+            </tr>
+            <tr>
+              <th>Đọc</th>
+              <td>Bài viết phổ thông, hướng dẫn</td>
+            </tr>
+            <tr>
+              <th>Viết</th>
+              <td>Viết email/ngắn gọn</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="language-meters">
+          <div class="lang-meter"><span>Nghe</span><div class="bar"><i style="width:75%"></i></div></div>
+          <div class="lang-meter"><span>Nói</span><div class="bar"><i style="width:70%"></i></div></div>
+          <div class="lang-meter"><span>Đọc</span><div class="bar"><i style="width:78%"></i></div></div>
+          <div class="lang-meter"><span>Viết</span><div class="bar"><i style="width:68%"></i></div></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2 class="contact__title">Liên hệ</h2>
+    <p class="contact__desc">Quê quán: California</p>
+    <nav class="contact__links" aria-label="Liên hệ mạng xã hội">
+      <a class="contact__link" href="https://www.instagram.com/tuaw.ahnn_/" target="_blank" rel="noopener">Instagram</a>
+      <a class="contact__link" href="https://github.com/TuanAnh0207" target="_blank" rel="noopener">GitHub</a>
+      <a class="contact__link" href="https://www.facebook.com/tuananh0207" target="_blank" rel="noopener">Facebook</a>
+    </nav>
+  </section>
+
+  <footer class="footer">
+    &copy; 2025 Tuấn Anh Blog
+  </footer>
+  <button id="back-to-top" class="backtop" aria-label="Lên đầu trang">
+    <span class="backtop__progress"></span>
+    <span class="backtop__arrow">↑</span>
+  </button>
+  <script src="./assets/js/index.js"></script>
+</body>
+</html>

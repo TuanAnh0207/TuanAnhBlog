@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xử lý ngoại lệ trong Java</title>
+  <link rel="stylesheet" href="../assets/css/index.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="../index.html" class="header__title">Tuấn Anh Blog</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="../index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+  <main class="post" style="max-width: 820px; margin: 2rem auto; padding: 0 1rem;">
+    <h1 class="post__title">Xử lý ngoại lệ trong Java</h1>
+    <img class="post-hero" src="../assets/images/Post/Xử lý ngoại lệ trong Java.png" alt="Exception Java" />
+    <p class="post__summary">Best practice với try/catch/finally, custom exception và checked vs unchecked: cách log gọn, bọc lỗi có ngữ cảnh, và thiết kế API sạch.</p>
+    <h2>Checked vs Unchecked</h2>
+    <p>Checked cần khai báo/try-catch; Unchecked (RuntimeException) không bắt buộc nhưng cần kiểm soát logic.</p>
+    <h2>Clean handling</h2>
+    <p>Log đủ thông tin, tránh nuốt lỗi; bubble-up khi cần; wrap exception để giữ ngữ cảnh.</p>
+    <pre><code>class BusinessException extends RuntimeException {
+  public BusinessException(String msg, Throwable cause){ super(msg, cause); }
+}
+
+try {
+  payment.charge(userId, amount);
+} catch (IOException e) {
+  throw new BusinessException("PAYMENT_IO_ERROR user=" + userId, e);
+}</code></pre>
+    <h2>finally và try-with-resources</h2>
+    <p>Ưu tiên try-with-resources cho I/O để tự động đóng.</p>
+    <h2>Nguyên tắc logging</h2>
+    <ul>
+      <li>Log có bối cảnh: userId, requestId, tham số quan trọng.</li>
+      <li>Tránh log stacktrace ở mức INFO; dùng WARN/ERROR hợp lý.</li>
+      <li>Không lộ thông tin nhạy cảm (token/mật khẩu) trong log.</li>
+    </ul>
+    <h2>Bộ ngoại lệ miền (domain)</h2>
+    <p>Tạo hierarchy ngoại lệ theo lớp: <code>DomainException</code> cha, các ngoại lệ con để mapping status HTTP (400/404/409...).</p>
+    <h2>Mapping HTTP trong REST</h2>
+    <ul>
+      <li>400 Bad Request: dữ liệu không hợp lệ (ValidationException)</li>
+      <li>404 Not Found: tài nguyên không tồn tại</li>
+      <li>409 Conflict: xung đột business (ví dụ trùng booking)</li>
+      <li>500 Internal Server Error: lỗi không dự đoán được</li>
+    </ul>
+    <h2>Case study: API thanh toán</h2>
+    <p>Mapping lỗi I/O sang 502, lỗi business sang 400/409, lỗi xác thực 401/403. Log ở biên (filter/controller advice), không log trùng ở nhiều tầng.</p>
+    <pre><code>try (var in = Files.newInputStream(path)) {
+  // read
+}</code></pre>
+    <section class="related">
+      <h3 class="related__title">Bài viết gần đây</h3>
+      <div class="related__grid">
+        <a class="related-card" href="./post3.html"><img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Collections" /><div class="related-card__body"><h4 class="related-card__title">Collections</h4><p class="related-card__desc">Chọn DS phù hợp.</p></div></a>
+        <a class="related-card" href="./post5.html"><img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Network" /><div class="related-card__body"><h4 class="related-card__title">Mạng với Java</h4><p class="related-card__desc">Socket và ví dụ.</p></div></a>
+        <a class="related-card" href="./post6.html"><img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Scope" /><div class="related-card__body"><h4 class="related-card__title">Scope & Closure</h4><p class="related-card__desc">Tránh bug JS thường gặp.</p></div></a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+

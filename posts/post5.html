@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lập trình mạng với Java</title>
+  <link rel="stylesheet" href="../assets/css/index.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="../index.html" class="header__title">Tuấn Anh Blog</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="../index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+  <main class="post" style="max-width: 820px; margin: 2rem auto; padding: 0 1rem;">
+    <h1 class="post__title">Lập trình mạng với Java</h1>
+    <img class="post-hero" src="../assets/images/Post/Lập trình mạng với Java.png" alt="Java Networking" />
+    <p class="post__summary">Socket TCP/UDP, client-server cơ bản và lưu ý khi thiết kế giao thức ứng dụng. Bên dưới có ví dụ server/client tối giản.</p>
+    <h2>TCP Server/Client</h2>
+    <p>Dùng ServerSocket/Socket, luồng đọc ghi, mô hình thread-per-connection hoặc thread pool.</p>
+    <h2>UDP</h2>
+    <p>DatagramSocket phù hợp message nhỏ, chấp nhận mất mát; cần tự xử lý reliability nếu cần.</p>
+    <pre><code>// TCP Echo Server (Java)
+try (ServerSocket ss = new ServerSocket(9000)) {
+  while (true) {
+    Socket s = ss.accept();
+    new Thread(() -> {
+      try (s; var in = new java.util.Scanner(s.getInputStream());
+                var out = new java.io.PrintWriter(s.getOutputStream(), true)) {
+        while (in.hasNextLine()) out.println(in.nextLine());
+      } catch (Exception ignored) {}
+    }).start();
+  }
+}</code></pre>
+    <section class="related">
+      <h3 class="related__title">Bài viết gần đây</h3>
+      <div class="related__grid">
+        <a class="related-card" href="./post4.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Exception" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">Xử lý ngoại lệ</h4>
+            <p class="related-card__desc">Checked vs unchecked, best practices.</p>
+          </div>
+        </a>
+        <a class="related-card" href="./post3.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Collections" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">Collections</h4>
+            <p class="related-card__desc">Chọn DS đúng tình huống.</p>
+          </div>
+        </a>
+        <a class="related-card" href="./post7.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Promise" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">Promise & await</h4>
+            <p class="related-card__desc">Bất đồng bộ hiện đại.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <h2>Thiết kế giao thức ứng dụng</h2>
+    <ul>
+      <li>Quy ước message rõ ràng (JSON/Protobuf), có phiên bản (<code>version</code>).</li>
+      <li>Idempotent cho các thao tác có thể retry.</li>
+      <li>Timeout & retry với backoff; tránh retry vô hạn.</li>
+    </ul>
+    <h2>Ví dụ client Java đơn giản</h2>
+    <pre><code>// TCP Client
+try (var s = new Socket("127.0.0.1", 9000);
+     var in = new java.util.Scanner(s.getInputStream());
+     var out = new java.io.PrintWriter(s.getOutputStream(), true)) {
+  out.println("ping");
+  System.out.println(in.nextLine());
+}</code></pre>
+    <h2>Quan sát & debug mạng</h2>
+    <p>Dùng <code>tcpdump</code>/<code>Wireshark</code> để bắt gói; <code>netstat</code> xem cổng; <code>ss</code> theo dõi kết nối. Logging theo requestId để truy vết end-to-end.</p>
+    <h2>Monitoring & debug</h2>
+    <ul>
+      <li>Dùng <code>tcpdump/Wireshark</code> để phân tích gói tin.</li>
+      <li>Log requestId và thời gian round-trip.</li>
+      <li>Đặt health-check và metrics (latency, throughput, error rate).</li>
+    </ul>
+  </main>
+</body>
+</html>
+

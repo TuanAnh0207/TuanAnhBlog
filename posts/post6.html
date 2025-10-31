@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS: Scope, Hoisting, Closure</title>
+  <link rel="stylesheet" href="../assets/css/index.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="header__container">
+      <a href="../index.html" class="header__title">Tuấn Anh Blog</a>
+      <nav class="header__nav">
+        <a class="header__nav-link" href="../index.html">Home</a>
+      </nav>
+    </div>
+  </header>
+  <main class="post" style="max-width: 820px; margin: 2rem auto; padding: 0 1rem;">
+    <h1 class="post__title">JS: Scope, Hoisting, Closure</h1>
+    <img class="post-hero" src="../assets/images/Post/JS Scope, Hoisting, Closure.png" alt="JS Scope Hoisting Closure" />
+    <p class="post__summary">Hiểu cách JS phân giải biến, hoisting và tạo closure để tránh bug thường gặp. Có ví dụ code và nút copy.</p>
+    <h2>Scope & Hoisting</h2>
+    <p><code>var</code> hoist khác <code>let</code>/<code>const</code>. Block scope giúp tránh rò rỉ biến.</p>
+    <h2>Closure</h2>
+    <p>Closure giữ tham chiếu môi trường tại thời điểm tạo hàm, hữu ích cho factory, module pattern.</p>
+    <pre><code>// Ví dụ closure đơn giản
+function createCounter(){
+  let n = 0; // được giữ bởi closure
+  return () => ++n;
+}
+
+const next = createCounter();
+console.log(next()); // 1
+console.log(next()); // 2</code></pre>
+    <section class="related">
+      <h3 class="related__title">Bài viết gần đây</h3>
+      <div class="related__grid">
+        <a class="related-card" href="./post7.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="Promise" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">Promise & async-await</h4>
+            <p class="related-card__desc">Quản lý luồng bất đồng bộ.</p>
+          </div>
+        </a>
+        <a class="related-card" href="./post8.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="DOM" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">DOM & Event</h4>
+            <p class="related-card__desc">Event delegation, performance.</p>
+          </div>
+        </a>
+        <a class="related-card" href="./post1.html">
+          <img class="related-card__thumb" src="../assets/images/BATUOC.png" alt="JVM" />
+          <div class="related-card__body">
+            <h4 class="related-card__title">JVM, JRE, JDK</h4>
+            <p class="related-card__desc">Phân biệt và ví dụ chạy.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+    <h2>Scope chain & shadowing</h2>
+    <p>JS tra cứu biến theo chuỗi lexial từ trong ra ngoài. Tránh đặt biến trùng tên gây <em>shadowing</em> làm khó đọc và lỗi logic.</p>
+    <h2>Module hoá</h2>
+    <pre><code>// counter.mjs
+let n = 0;
+export function next(){ return ++n; }
+// main.mjs
+import { next } from './counter.mjs';
+console.log(next());</code></pre>
+    <h2>FAQ</h2>
+    <p><strong>Vì sao <code>this</code> trong arrow function khác function thường?</strong> Arrow không có <code>this</code> riêng, nó giữ <code>this</code> của phạm vi bên ngoài (lexical this).</p>
+    <h2>Bài tập nhỏ</h2>
+    <ol>
+      <li>Viết hàm <code>once(fn)</code> chỉ cho phép gọi một lần (dùng closure).</li>
+      <li>Tạo module <code>storage</code> bọc <code>localStorage</code> với TTL.</li>
+    </ol>
+  </main>
+</body>
+</html>
+
